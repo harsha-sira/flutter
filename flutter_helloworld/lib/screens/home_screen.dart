@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_helloworld/screens/destination.dart';
+import 'package:flutter_helloworld/widgets/destination_carousel.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomeScreen extends StatefulWidget {
