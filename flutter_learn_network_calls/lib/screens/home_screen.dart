@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_learn_network_calls/model/Photo.dart';
+import 'package:flutter_learn_network_calls/screens/location_screen.dart';
 import 'package:flutter_learn_network_calls/screens/photoList.dart';
 import 'package:http/http.dart' as http;
 
@@ -37,7 +38,10 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          //
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => LocationScreen()),
+          );
         },
         label: Text('Approve'),
         icon: Icon(Icons.thumb_up),
