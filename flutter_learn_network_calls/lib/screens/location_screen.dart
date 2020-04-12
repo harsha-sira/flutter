@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_learn_network_calls/Utility/db_helper.dart';
 import 'package:flutter_learn_network_calls/model/Location.dart';
+import 'package:flutter_learn_network_calls/screens/location_background.dart';
 
 class LocationScreen extends StatefulWidget {
   @override
@@ -79,7 +80,7 @@ class _LocationScreenState extends State<LocationScreen> {
               onSaved: (val) {
                 lontitude = double.parse(val);
                 debugPrint(lontitude.toString());
-                FocusScope.of(context).unfocus();
+                // FocusScope.of(context).unfocus();
               },
             ),
             TextFormField(
@@ -89,7 +90,7 @@ class _LocationScreenState extends State<LocationScreen> {
               onSaved: (val1) {
                 latitude = double.parse(val1);
                 debugPrint(latitude.toString());
-                FocusScope.of(context).unfocus();
+                // FocusScope.of(context).unfocus();
               },
             ),
             Row(
@@ -195,6 +196,17 @@ class _LocationScreenState extends State<LocationScreen> {
         title: Text(
           'Locations',
         ),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => LocationBackgrond()),
+          );
+        },
+        label: Text('Location Service'),
+        icon: Icon(Icons.location_on),
+        backgroundColor: Colors.pink,
       ),
       body: Container(
         child: Column(
