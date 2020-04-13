@@ -1,4 +1,4 @@
-package rekab.app.background_locator_example
+package com.example.flutter_learn_network_calls
 
 import io.flutter.app.FlutterApplication
 import io.flutter.plugin.common.PluginRegistry
