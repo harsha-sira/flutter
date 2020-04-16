@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:isolate';
 import 'dart:math';
 import 'dart:ui';
@@ -6,7 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:background_locator/background_locator.dart';
 import 'package:background_locator/location_dto.dart';
 import 'package:background_locator/location_settings.dart';
+import 'package:flutter_learn_network_calls/Utility/db_helper.dart';
 import 'package:flutter_learn_network_calls/Utility/file_manager.dart';
+import 'package:flutter_learn_network_calls/model/Location.dart';
 import 'package:location_permissions/location_permissions.dart';
 
 class LocationBackgrond extends StatefulWidget {
@@ -21,14 +24,16 @@ class _LocationBackgrondState extends State<LocationBackgrond> {
 
   String logStr = '';
   bool isRunning;
-  LocationDto lastLocation;
+  static LocationDto lastLocation;
   DateTime lastTimeLocation;
   static const String _isolateName = 'LocatorIsolate';
+  static DBHelper dbHelper;
 
   @override
   void initState() {
     super.initState();
-
+    dbHelper = new DBHelper();
+    print('DBHelper: ' + dbHelper.toString());
     if (IsolateNameServer.lookupPortByName(_isolateName) != null) {
       IsolateNameServer.removePortNameMapping(_isolateName);
     }
@@ -68,6 +73,17 @@ class _LocationBackgrondState extends State<LocationBackgrond> {
         '${formatDateLog(date)} --> ${formatLog(data)}\n');
   }
 
+  static Future<void> setDataToSQLite(LocationDto data) async {
+    final date = DateTime.now();
+    Location e =
+        Location(data.latitude, data.longitude, date.toIso8601String(), 0);
+    if (dbHelper == null) {
+      print("db helper null");
+      dbHelper = new DBHelper();
+    }
+    await dbHelper.addLocation(e);
+  }
+
   Future<void> updateUI(LocationDto data) async {
     final log = await FileManager.readLogFile();
     setState(() {
@@ -92,6 +108,7 @@ class _LocationBackgrondState extends State<LocationBackgrond> {
   static void callback(LocationDto locationDto) async {
     print('location in dart: ${locationDto.toString()}');
     await setLog(locationDto);
+    await setDataToSQLite(locationDto);
     final SendPort send = IsolateNameServer.lookupPortByName(_isolateName);
     send?.send(locationDto);
   }
@@ -130,7 +147,7 @@ class _LocationBackgrondState extends State<LocationBackgrond> {
           notificationMsg: "Track location in background exapmle",
           wakeLockTime: 20,
           autoStop: false,
-          interval: 15),
+          interval: 10),
     );
     setState(() {
       isRunning = true;

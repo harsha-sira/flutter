@@ -26,6 +26,7 @@ class DBHelper {
     // Insert the Location into the correct table. Also specify the
     // `conflictAlgorithm`. In this case, if the same dog is inserted
     // multiple times, it replaces the previous data.
+    print('add location start');
     await db.insert(
       'location',
       location.toMap(),
@@ -75,6 +76,13 @@ class DBHelper {
       // Pass the Dog's id as a whereArg to prevent SQL injection.
       whereArgs: [id],
     );
+  }
+
+  //delete location
+  Future<void> deleteAllLocation() async {
+    // Get a reference to the database.
+    final db = await getConnection();
+    await db.delete('location');
   }
 
   //close connection

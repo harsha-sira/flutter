@@ -8,6 +8,9 @@
 .buildlog/
 .history
 .svn/
+.project
+.classpath
+org.eclipse.buildship.core.prefs
 
 # IntelliJ related
 *.iml

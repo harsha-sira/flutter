@@ -123,14 +123,14 @@ class _LocationScreenState extends State<LocationScreen> {
       child: DataTable(
         columns: [
           DataColumn(
-            label: Text('Lontitude'),
-          ),
-          DataColumn(
-            label: Text('Latitude'),
+            label: Text('Lon / Lat'),
           ),
           // DataColumn(
-          //   label: Text('Date/Time'),
+          //   label: Text('Latitude'),
           // ),
+          DataColumn(
+            label: Text('Date/Time'),
+          ),
           DataColumn(
             label: Text('DELETE'),
           ),
@@ -139,24 +139,26 @@ class _LocationScreenState extends State<LocationScreen> {
             .map(
               (location) => DataRow(cells: [
                 DataCell(
-                  Text(location.longtitude.toString()),
-                  onTap: () {
-                    setState(() {
-                      isUpdating = true;
-                      id = location.id;
-                    });
-                    lontitudeController.text = location.longtitude.toString();
-                  },
+                  Text(location.longtitude.toString() +
+                      "/" +
+                      location.latitude.toString()),
+                  // onTap: () {
+                  //   setState(() {
+                  //     isUpdating = true;
+                  //     id = location.id;
+                  //   });
+                  //   lontitudeController.text = location.longtitude.toString();
+                  // },
                 ),
                 DataCell(
-                  Text(location.latitude.toString()),
-                  onTap: () {
-                    setState(() {
-                      isUpdating = true;
-                      id = location.id;
-                    });
-                    latitudeController.text = location.latitude.toString();
-                  },
+                  Text(location.datetime.toString().substring(0, 17)),
+                  // onTap: () {
+                  //   setState(() {
+                  //     isUpdating = true;
+                  //     id = location.id;
+                  //   });
+                  //   latitudeController.text = location.latitude.toString();
+                  // },
                 ),
                 DataCell(IconButton(
                   icon: Icon(Icons.delete),
@@ -214,7 +216,28 @@ class _LocationScreenState extends State<LocationScreen> {
           mainAxisSize: MainAxisSize.min,
           verticalDirection: VerticalDirection.down,
           children: <Widget>[
-            form(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                RaisedButton(
+                  child: Text('Delete All Locations'),
+                  textColor: Colors.red,
+                  onPressed: () {
+                    print("delete all -> ");
+                    dbHelper.deleteAllLocation();
+                    refreshList();
+                  },
+                ),
+                RaisedButton(
+                  child: Text('Refresh'),
+                  textColor: Colors.blue[400],
+                  onPressed: () {
+                    refreshList();
+                  },
+                ),
+              ],
+            ),
+            // form(),
             list(),
           ],
         ),
