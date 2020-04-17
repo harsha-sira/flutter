@@ -86,6 +86,15 @@ class _LocationBackgrondState extends State<LocationBackgrond> {
 
   Future<void> updateUI(LocationDto data) async {
     final log = await FileManager.readLogFile();
+    /*
+    This line will prevent below error
+    This error might indicate a memory leak if setState() is being called because 
+    another object is retaining a reference to this State object after it has been removed 
+    from the tree. To avoid memory leaks, consider breaking the reference to this object 
+    during dispose().
+    */
+    if (!mounted) return;
+
     setState(() {
       lastLocation = data;
       lastTimeLocation = DateTime.now();
@@ -153,33 +162,6 @@ class _LocationBackgrondState extends State<LocationBackgrond> {
       isRunning = true;
     });
   }
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   return Scaffold(
-  //     appBar: AppBar(
-  //       title: Text("Location Background"),
-  //     ),
-  //     body: Container(
-  //       child: Column(
-  //         children: <Widget>[
-  //           FlatButton(
-  //             child: Text("Register"),
-  //             onPressed: () {
-  //               BackgroundLocator.registerLocationUpdate(callback)
-  //             },
-  //           ),
-  //           FlatButton(
-  //             child: Text("Unregister"),
-  //             onPressed: () {
-  //               BackgroundLocator.unRegisterLocationUpdate();
-  //             },
-  //           )
-  //         ],
-  //       ),
-  //     ),
-  //   );
-  // }
 
   @override
   Widget build(BuildContext context) {
