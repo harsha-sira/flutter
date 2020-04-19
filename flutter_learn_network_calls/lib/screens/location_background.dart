@@ -10,6 +10,7 @@ import 'package:background_locator/location_settings.dart';
 import 'package:flutter_learn_network_calls/Utility/db_helper.dart';
 import 'package:flutter_learn_network_calls/Utility/file_manager.dart';
 import 'package:flutter_learn_network_calls/model/Location.dart';
+import 'package:flutter_learn_network_calls/screens/alarm_manager.dart';
 import 'package:location_permissions/location_permissions.dart';
 
 class LocationBackgrond extends StatefulWidget {
@@ -216,6 +217,17 @@ class _LocationBackgrondState extends State<LocationBackgrond> {
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Flutter background Locator'),
+        ),
+        floatingActionButton: FloatingActionButton.extended(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => AlarmManager()),
+            );
+          },
+          label: Text('Alarm Manager Service'),
+          icon: Icon(Icons.alarm_on),
+          backgroundColor: Colors.pink,
         ),
         body: Container(
           width: double.maxFinite,
