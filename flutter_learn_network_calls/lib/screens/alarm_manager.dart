@@ -3,7 +3,7 @@ import 'dart:ui';
 
 import 'package:android_alarm_manager/android_alarm_manager.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_learn_network_calls/Utility/db_helper.dart';
+import 'package:flutter_learn_network_calls/screens/Call_back_operations.dart';
 
 class AlarmManager extends StatefulWidget {
   AlarmManager({Key key}) : super(key: key);
@@ -23,19 +23,18 @@ class _AlarmManagerState extends State<AlarmManager> {
 
   /// A port used to communicate from a background isolate to the UI isolate.
   final ReceivePort port1 = ReceivePort();
-  static DBHelper dbHelper;
 
   @override
   void initState() {
     super.initState();
-    dbHelper = new DBHelper();
-    print('DBHelper: ' + dbHelper.toString());
+    CallBackService.init();
     initPlatformStateAlarm();
   }
 
   // The callback for our alarm
   static Future<void> callbackAlarm() async {
     print('Alarm fired!' + DateTime.now().toIso8601String());
+    CallBackService.run();
   }
 
   Future<void> initPlatformStateAlarm() async {
