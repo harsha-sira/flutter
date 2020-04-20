@@ -31,7 +31,13 @@ dependencies:
   background_locator: ^1.1.2+2
   path_provider: ^1.6.5
   location_permissions: ^2.0.5
-  android_alarm_manager: ^0.4.5+8
+  # android_alarm_manager: ^0.4.5+8
+  # android_alarm_manager:
+  #   git:
+  #     url: git://github.com/harsha-sira/plugins.git
+  #     path: packages/android_alarm_manager
+  android_alarm_manager:
+    path: ../../FlutterPlugins/packages/android_alarm_manager
 
 dev_dependencies:
   flutter_test:
