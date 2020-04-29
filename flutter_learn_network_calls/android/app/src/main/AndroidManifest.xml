@@ -37,6 +37,11 @@
             </intent-filter>
         </activity>
 
+        <service
+            android:name=".ForegroundService"
+            android:enabled="true"
+            android:exported="false" />
+
         <receiver android:name="rekab.app.background_locator.LocatorBroadcastReceiver"
                 android:enabled="true"
                 android:exported="true"/>
