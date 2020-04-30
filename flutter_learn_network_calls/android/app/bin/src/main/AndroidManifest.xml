@@ -14,7 +14,7 @@
          additional functionality it is fine to subclass or reimplement
          FlutterApplication and put your custom class here. -->
     <application
-        android:name=".Application"
+        android:name="io.flutter.app.FlutterApplication"
         android:label="flutter_learn_network_calls"
         android:icon="@mipmap/ic_launcher">
         <activity
@@ -37,7 +37,12 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name="rekab.app.background_locator.LocatorBroadcastReceiver"
+        <service
+            android:name=".ForegroundService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <!-- <receiver android:name="rekab.app.background_locator.LocatorBroadcastReceiver"
                 android:enabled="true"
                 android:exported="true"/>
         <service android:name="rekab.app.background_locator.LocatorService"
@@ -45,7 +50,7 @@
             android:exported="true"/>
         <service android:name="rekab.app.background_locator.IsolateHolderService"
             android:permission="android.permission.FOREGROUND_SERVICE"
-            android:exported="true"/>
+            android:exported="true"/> -->
 
         <service
             android:name="io.flutter.plugins.androidalarmmanager.AlarmService"
