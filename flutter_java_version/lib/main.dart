@@ -33,10 +33,17 @@ class _MyHomePageState extends State<MyHomePage> {
   static const MethodChannel methodChannel =
       MethodChannel('samples.flutter.io/battery');
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+  Future<void> _callForegroundService() async {
+    try {
+      final String result = await methodChannel.invokeMethod('foreground');
+      setState(() {
+        message = result;
+      });
+    } catch (e) {
+      setState(() {
+        message = e.toString();
+      });
+    }
   }
 
   Future<void> _getBatteryLevel() async {
@@ -72,10 +79,15 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: _getBatteryLevel,
+      //   tooltip: 'battryLevel',
+      //   child: Icon(Icons.battery_alert),
+      // ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _getBatteryLevel,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
+        onPressed: _callForegroundService,
+        tooltip: 'Service',
+        child: Icon(Icons.directions_run),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }

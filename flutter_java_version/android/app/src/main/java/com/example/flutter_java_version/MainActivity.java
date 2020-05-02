@@ -4,6 +4,9 @@ package com.example.flutter_java_version;
 // import io.flutter.embedding.android.FlutterActivity;
 // import io.flutter.embedding.engine.FlutterEngine;
 // import io.flutter.plugins.GeneratedPluginRegistrant;
+// import android.content.Intent;
+// import android.os.Bundle;
+import androidx.core.content.ContextCompat;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.ContextWrapper;
@@ -44,6 +47,13 @@ public class MainActivity extends FlutterActivity {
           } else {
             result.error("UNAVAILABLE", "Battery level not available.", null);
           }
+        } else if (call.method.equals("foreground")) {
+
+          Intent serviceIntent = new Intent(getActivity(), ForegroundService.class);
+          serviceIntent.putExtra("inputExtra", "Foreground Service Example in Android");
+          ContextCompat.startForegroundService(getActivity(), serviceIntent);
+
+          result.success("Run Service Success");
         } else {
           result.notImplemented();
         }
