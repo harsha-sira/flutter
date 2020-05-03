@@ -11,6 +11,7 @@ import android.os.IBinder;
 import androidx.annotation.NonNull;
 //need replacing 'android.support.v4' to 'androidx.core'
 import androidx.core.app.NotificationCompat;
+import java.util.concurrent.*;
 
 public class ForegroundService extends Service {
     public static final String CHANNEL_ID = "ForegroundServiceChannel";
@@ -31,13 +32,18 @@ public class ForegroundService extends Service {
                 .setContentIntent(pendingIntent).build();
         startForeground(1, notification);
         // do heavy work on a background thread
-        try {
-            Thread.sleep(20000);
-        } catch (Exception e) {
-            System.out.println("Error occured:->" + e.toString());
-        } finally {
-            stopSelf();
-        }
+        Executors.newSingleThreadExecutor().execute(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(15000);
+                } catch (Exception e) {
+
+                } finally {
+                    stopSelf();
+                }
+            }
+        });
 
         return START_NOT_STICKY;
     }

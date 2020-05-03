@@ -83,6 +83,16 @@ class _AlarmManagerState extends State<AlarmManager> {
     });
   }
 
+  void _runForegroundServiceDirectly() async {
+    try {
+      await methodChannel.invokeMethod(
+        'foregroundService',
+      );
+    } on PlatformException catch (e) {
+      print("Failed to get battery level: '${e.message}'.");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final start = SizedBox(
@@ -100,6 +110,15 @@ class _AlarmManagerState extends State<AlarmManager> {
         child: Text('Stop'),
         onPressed: () {
           _stopAlarmManager();
+        },
+      ),
+    );
+    final directRun = SizedBox(
+      width: double.maxFinite,
+      child: RaisedButton(
+        child: Text('Run direct'),
+        onPressed: () {
+          _runForegroundServiceDirectly();
         },
       ),
     );
@@ -124,6 +143,7 @@ class _AlarmManagerState extends State<AlarmManager> {
             children: <Widget>[
               start,
               stop,
+              directRun,
               status,
             ],
           ),
