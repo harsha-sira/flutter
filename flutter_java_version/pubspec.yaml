@@ -1,4 +1,4 @@
-name: flutter_learn_network_calls
+name: flutter_java_version
 description: A new Flutter project.
 
 # The following defines the version and build number for your application.
@@ -12,7 +12,6 @@ description: A new Flutter project.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 version: 1.0.0+1
-#androidX: true
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
@@ -23,23 +22,11 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^0.1.3
-  font_awesome_flutter: ^8.8.1
-  http: ^0.12.0+4
-  sqflite: ^1.3.0
-  path: ^1.6.4
-  # background_locator: ^1.1.2+2
-  path_provider: ^1.6.5
-  location_permissions: ^2.0.5
-  #foreground_service: ^2.0.1+1
-  foreground_service: ^1.3.0
+  cupertino_icons: ^0.1.2
   # android_alarm_manager: ^0.4.5+8
-  # android_alarm_manager:
-  #   git:
-  #     url: git://github.com/harsha-sira/plugins.git
-  #     path: packages/android_alarm_manager
   android_alarm_manager:
     path: ../../FlutterPlugins/packages/android_alarm_manager
+  sqflite: ^1.3.0
 
 dev_dependencies:
   flutter_test:

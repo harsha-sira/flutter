@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_learn_network_calls/Utility/db_helper.dart';
 import 'package:flutter_learn_network_calls/model/Location.dart';
+import 'package:flutter_learn_network_calls/screens/alarm_manager.dart';
 import 'package:flutter_learn_network_calls/screens/location_background.dart';
 
 class LocationScreen extends StatefulWidget {
@@ -203,7 +204,7 @@ class _LocationScreenState extends State<LocationScreen> {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => LocationBackgrond()),
+            MaterialPageRoute(builder: (context) => AlarmManager()),
           );
         },
         label: Text('Location Service'),

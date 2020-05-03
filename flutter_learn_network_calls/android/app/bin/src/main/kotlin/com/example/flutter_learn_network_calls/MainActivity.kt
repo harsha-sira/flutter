@@ -19,9 +19,6 @@ class MainActivity : FlutterActivity() {
             if (call.method == "foregroundService") {
                 runAlarmManager()
             }
-            else {
-                result.notImplemented()
-            }   
         }
     }
 
