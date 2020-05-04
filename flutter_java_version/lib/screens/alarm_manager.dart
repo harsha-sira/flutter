@@ -6,6 +6,7 @@ import 'package:android_alarm_manager/android_alarm_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_java_version/screens/Call_back_operations.dart';
+import 'dart:io' show Platform;
 
 class AlarmManager extends StatefulWidget {
   AlarmManager({Key key}) : super(key: key);
@@ -39,12 +40,14 @@ class _AlarmManagerState extends State<AlarmManager> {
   // The callback for our alarm
   static Future<void> callbackAlarm() async {
     print('Alarm fired!' + DateTime.now().toIso8601String());
-    try {
-      await methodChannel.invokeMethod(
-        'foregroundService',
-      );
-    } on PlatformException catch (e) {
-      print("Failed to get battery level: '${e.message}'.");
+    if (Platform.isAndroid) {
+      try {
+        await methodChannel.invokeMethod(
+          'foregroundService',
+        );
+      } on PlatformException catch (e) {
+        print("Failed to get battery level: '${e.message}'.");
+      }
     }
   }
 
@@ -63,12 +66,14 @@ class _AlarmManagerState extends State<AlarmManager> {
 
   void _runAlarmManager() async {
     // startAt: strt,
-    print("starting alarm ...");
-    await AndroidAlarmManager.periodic(
-        const Duration(minutes: 1), helloAlarmID, callbackAlarm,
-        exact: true, wakeup: true, rescheduleOnReboot: true);
+    if (Platform.isAndroid) {
+      print("starting alarm ...");
+      await AndroidAlarmManager.periodic(
+          const Duration(minutes: 1), helloAlarmID, callbackAlarm,
+          exact: true, wakeup: true, rescheduleOnReboot: true);
 
-    print("started alarm ...");
+      print("started alarm ...");
+    }
 
     setState(() {
       isRunning = true;
@@ -84,12 +89,14 @@ class _AlarmManagerState extends State<AlarmManager> {
   }
 
   void _runForegroundServiceDirectly() async {
-    try {
-      await methodChannel.invokeMethod(
-        'foregroundService',
-      );
-    } on PlatformException catch (e) {
-      print("Failed to get battery level: '${e.message}'.");
+    if (Platform.isAndroid) {
+      try {
+        await methodChannel.invokeMethod(
+          'foregroundService',
+        );
+      } on PlatformException catch (e) {
+        print("Failed to get battery level: '${e.message}'.");
+      }
     }
   }
 
