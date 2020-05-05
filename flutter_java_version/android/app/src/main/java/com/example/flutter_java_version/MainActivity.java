@@ -21,6 +21,14 @@ import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugins.GeneratedPluginRegistrant;
+import com.example.flutter_java_version.utility.PermissionUtility;
+
+import java.security.Permission;
+import android.content.pm.PackageManager;
+import androidx.core.app.ActivityCompat;
+import android.Manifest;
+import androidx.core.content.ContextCompat;
+import android.content.Context;
 
 public class MainActivity extends FlutterActivity {
 
@@ -64,6 +72,22 @@ public class MainActivity extends FlutterActivity {
           ContextCompat.startForegroundService(getActivity(), serviceIntent);
 
           result.success("Run Service Success");
+        } else if (call.method.equals("permissions")) {
+
+          // PermissionUtility utility = new
+          // PermissionUtility(getActivity().getApplicationContext());
+          // utility.requestLocationPermissions();
+          // boolean permissionAccessCoarseLocationApproved1 =
+          // ContextCompat.checkSelfPermission(getApplicationContext(),
+          // Manifest.permission.ACCESS_FINE_LOCATION) !=
+          // PackageManager.PERMISSION_GRANTED;
+
+          // boolean permissionAccessCoarseLocationApproved =
+          // ActivityCompat.checkSelfPermission(getActivity(),
+          // Manifest.permission.ACCESS_COARSE_LOCATION) ==
+          // PackageManager.PERMISSION_GRANTED;
+
+          result.success("Permission Success");
         } else {
           result.notImplemented();
         }

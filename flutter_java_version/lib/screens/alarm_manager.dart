@@ -51,6 +51,18 @@ class _AlarmManagerState extends State<AlarmManager> {
     }
   }
 
+  void checkPermissions() async {
+    if (Platform.isAndroid) {
+      try {
+        await methodChannel.invokeMethod(
+          'permissions',
+        );
+      } on PlatformException catch (e) {
+        print("'${e.message}'");
+      }
+    }
+  }
+
   Future<void> initPlatformStateAlarm() async {
     print('Initializing...');
     // Register the UI isolate's SendPort to allow for communication from the
@@ -90,6 +102,7 @@ class _AlarmManagerState extends State<AlarmManager> {
 
   void _runForegroundServiceDirectly() async {
     if (Platform.isAndroid) {
+      checkPermissions();
       try {
         await methodChannel.invokeMethod(
           'foregroundService',

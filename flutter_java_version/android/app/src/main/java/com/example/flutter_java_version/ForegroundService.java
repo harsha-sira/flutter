@@ -36,7 +36,7 @@ public class ForegroundService extends Service {
             @Override
             public void run() {
                 try {
-                    Thread.sleep(15000);
+                    new LocationOperations().runLoad();
                 } catch (Exception e) {
 
                 } finally {
