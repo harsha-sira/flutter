@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wordle_inspired_app/components/app_bar_custom_icon.dart';
 import 'package:wordle_inspired_app/components/keyboard/keyboard.dart';
+import 'package:wordle_inspired_app/components/puzzle/puzzle_layout.dart';
 import 'package:wordle_inspired_app/constants.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -59,12 +60,20 @@ class _HomeScreenState extends State<HomeScreen> {
             Container(
               width: size.width,
               height: size.height * 0.6,
-              color: Colors.white,
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: size.width * 0.06,
+                  vertical: size.width * 0.12,
+                ),
+                child: Puzzle(
+                  rows: 6,
+                  items: 5,
+                ),
+              ),
             ),
             Container(
               width: size.width,
               height: size.height * 0.28,
-              // color: Colors.yellow,
               padding: EdgeInsets.only(bottom: 30),
               child: Keyboard(),
             ),
