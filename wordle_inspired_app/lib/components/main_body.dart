@@ -19,19 +19,19 @@ class MainBody extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-            // width: size.width,
-            // height: size.height * 0.55,
-            // child: Padding(
-            //   padding: EdgeInsets.symmetric(
-            //     horizontal: size.width * 0.06,
-            //     vertical: size.width * 0.12,
-            //   ),
-            //   child: Puzzle(
-            //     rows: rows,
-            //     items: items,
-            //   ),
-            // ),
+          width: size.width,
+          height: size.height * 0.55,
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: rows == 6 ? size.width * 0.06 : size.width * 0.05,
+              vertical: rows == 6 ? size.width * 0.06 : size.width * 0.065,
             ),
+            child: Puzzle(
+              rows: rows,
+              items: items,
+            ),
+          ),
+        ),
         Container(
           width: size.width,
           height: size.height * 0.28,

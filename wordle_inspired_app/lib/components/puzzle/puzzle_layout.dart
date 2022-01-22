@@ -25,7 +25,7 @@ class _PuzzleState extends State<Puzzle> {
           PuzzleRow(
             height: widget.rows == 6
                 ? MediaQuery.of(context).size.height * 0.075
-                : MediaQuery.of(context).size.height * 0.07, //todo
+                : MediaQuery.of(context).size.height * 0.065,
             items: widget.items,
           )
       ],
