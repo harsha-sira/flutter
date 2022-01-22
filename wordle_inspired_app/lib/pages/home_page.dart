@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wordle_inspired_app/components/app_bar_custom_icon.dart';
-import 'package:wordle_inspired_app/components/keyboard.dart';
+import 'package:wordle_inspired_app/components/keyboard/keyboard.dart';
 import 'package:wordle_inspired_app/constants.dart';
 
 class HomeScreen extends StatefulWidget {

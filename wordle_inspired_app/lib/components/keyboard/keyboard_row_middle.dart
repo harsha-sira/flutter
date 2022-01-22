@@ -1,29 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:wordle_inspired_app/components/Key.dart';
+import 'package:wordle_inspired_app/components/keyboard/Key.dart';
 
-class KeyBoardRow extends StatelessWidget {
-  const KeyBoardRow({Key? key}) : super(key: key);
+class KeyBoardRowMiddle extends StatelessWidget {
+  const KeyBoardRowMiddle({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Expanded(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
+          SizedBox(
+            width: size.width * 0.03,
+          ),
           SingleKey(
-            kcolor: Colors.grey,
+            kcolor: Color(0xFFe5e5e5),
             textColor: Colors.black,
             letter: "Q",
-            width: 35,
+            width: size.width * 0.08,
             function: () {
               print("Key");
             },
           ),
           SingleKey(
-            kcolor: Colors.grey,
+            kcolor: Color(0xFFe5e5e5),
             textColor: Colors.black,
             letter: "W",
-            width: 35,
+            width: size.width * 0.08,
             function: () {
               print("Key");
             },
@@ -32,7 +36,7 @@ class KeyBoardRow extends StatelessWidget {
             kcolor: Colors.grey,
             textColor: Colors.black,
             letter: "Q",
-            width: 35,
+            width: size.width * 0.08,
             function: () {
               print("Key");
             },
@@ -41,7 +45,7 @@ class KeyBoardRow extends StatelessWidget {
             kcolor: Colors.grey,
             textColor: Colors.black,
             letter: "Q",
-            width: 35,
+            width: size.width * 0.08,
             function: () {
               print("Key");
             },
@@ -50,7 +54,7 @@ class KeyBoardRow extends StatelessWidget {
             kcolor: Colors.grey,
             textColor: Colors.black,
             letter: "Q",
-            width: 35,
+            width: size.width * 0.08,
             function: () {
               print("Key");
             },
@@ -59,7 +63,7 @@ class KeyBoardRow extends StatelessWidget {
             kcolor: Colors.grey,
             textColor: Colors.black,
             letter: "Q",
-            width: 35,
+            width: size.width * 0.08,
             function: () {
               print("Key");
             },
@@ -68,7 +72,7 @@ class KeyBoardRow extends StatelessWidget {
             kcolor: Colors.grey,
             textColor: Colors.black,
             letter: "Q",
-            width: 35,
+            width: size.width * 0.08,
             function: () {
               print("Key");
             },
@@ -77,7 +81,7 @@ class KeyBoardRow extends StatelessWidget {
             kcolor: Colors.grey,
             textColor: Colors.black,
             letter: "Q",
-            width: 35,
+            width: size.width * 0.08,
             function: () {
               print("Key");
             },
@@ -86,19 +90,13 @@ class KeyBoardRow extends StatelessWidget {
             kcolor: Colors.grey,
             textColor: Colors.black,
             letter: "Q",
-            width: 35,
+            width: size.width * 0.08,
             function: () {
               print("Key");
             },
           ),
-          SingleKey(
-            kcolor: Colors.grey,
-            textColor: Colors.black,
-            letter: "Q",
-            width: 35,
-            function: () {
-              print("Key");
-            },
+          SizedBox(
+            width: size.width * 0.03,
           ),
         ],
       ),

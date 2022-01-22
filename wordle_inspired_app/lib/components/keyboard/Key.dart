@@ -27,9 +27,9 @@ class _SingleKeyState extends State<SingleKey> {
       // width: widget.width,
       width: widget.width,
       height: MediaQuery.of(context).size.height * 0.07,
-      decoration: const BoxDecoration(
-        color: Colors.grey,
-        borderRadius: BorderRadius.all(
+      decoration: BoxDecoration(
+        color: widget.kcolor,
+        borderRadius: const BorderRadius.all(
           Radius.circular(5),
         ),
       ),
@@ -37,8 +37,10 @@ class _SingleKeyState extends State<SingleKey> {
         onPressed: widget.function,
         child: Text(
           widget.letter,
-          style:
-              TextStyle(color: widget.textColor, fontWeight: FontWeight.bold),
+          style: TextStyle(
+              color: widget.textColor,
+              fontWeight: FontWeight.w600,
+              fontSize: 14),
         ),
       ),
     );
