@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wordle_inspired_app/components/puzzle/puzzle_piece.dart';
 
 class Help extends StatelessWidget {
   const Help({Key? key}) : super(key: key);
@@ -101,6 +102,49 @@ class Help extends StatelessWidget {
           //
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 6),
+                  child: PuzzlePiece(
+                    height: MediaQuery.of(context).size.height * 0.055,
+                    width: MediaQuery.of(context).size.width * 0.12,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 6),
+                  child: PuzzlePiece(
+                    height: MediaQuery.of(context).size.height * 0.055,
+                    width: MediaQuery.of(context).size.width * 0.12,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 6),
+                  child: PuzzlePiece(
+                    height: MediaQuery.of(context).size.height * 0.055,
+                    width: MediaQuery.of(context).size.width * 0.12,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 6),
+                  child: PuzzlePiece(
+                    height: MediaQuery.of(context).size.height * 0.055,
+                    width: MediaQuery.of(context).size.width * 0.12,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 6),
+                  child: PuzzlePiece(
+                    height: MediaQuery.of(context).size.height * 0.055,
+                    width: MediaQuery.of(context).size.width * 0.12,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Flexible(
               child: Row(
                 children: const [
@@ -128,6 +172,49 @@ class Help extends StatelessWidget {
             ),
           ),
           //
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 6),
+                  child: PuzzlePiece(
+                    height: MediaQuery.of(context).size.height * 0.055,
+                    width: MediaQuery.of(context).size.width * 0.12,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 6),
+                  child: PuzzlePiece(
+                    height: MediaQuery.of(context).size.height * 0.055,
+                    width: MediaQuery.of(context).size.width * 0.12,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 6),
+                  child: PuzzlePiece(
+                    height: MediaQuery.of(context).size.height * 0.055,
+                    width: MediaQuery.of(context).size.width * 0.12,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 6),
+                  child: PuzzlePiece(
+                    height: MediaQuery.of(context).size.height * 0.055,
+                    width: MediaQuery.of(context).size.width * 0.12,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 6),
+                  child: PuzzlePiece(
+                    height: MediaQuery.of(context).size.height * 0.055,
+                    width: MediaQuery.of(context).size.width * 0.12,
+                  ),
+                ),
+              ],
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Flexible(
@@ -159,30 +246,71 @@ class Help extends StatelessWidget {
           //
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: Flexible(
-              child: Row(
-                children: const [
-                  Text(
-                    "The letter ",
-                    style: TextStyle(
-                      fontSize: 16,
-                    ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 6),
+                  child: PuzzlePiece(
+                    height: MediaQuery.of(context).size.height * 0.055,
+                    width: MediaQuery.of(context).size.width * 0.12,
                   ),
-                  Text(
-                    "U",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 6),
+                  child: PuzzlePiece(
+                    height: MediaQuery.of(context).size.height * 0.055,
+                    width: MediaQuery.of(context).size.width * 0.12,
                   ),
-                  Text(
-                    " is not in the word in any spot.",
-                    style: TextStyle(
-                      fontSize: 16,
-                    ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 6),
+                  child: PuzzlePiece(
+                    height: MediaQuery.of(context).size.height * 0.055,
+                    width: MediaQuery.of(context).size.width * 0.12,
                   ),
-                ],
-              ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 6),
+                  child: PuzzlePiece(
+                    height: MediaQuery.of(context).size.height * 0.055,
+                    width: MediaQuery.of(context).size.width * 0.12,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 6),
+                  child: PuzzlePiece(
+                    height: MediaQuery.of(context).size.height * 0.055,
+                    width: MediaQuery.of(context).size.width * 0.12,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: Row(
+              children: const [
+                Text(
+                  "The letter ",
+                  style: TextStyle(
+                    fontSize: 16,
+                  ),
+                ),
+                Text(
+                  "U",
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  " is not in the word in any spot.",
+                  style: TextStyle(
+                    fontSize: 16,
+                  ),
+                ),
+              ],
             ),
           ),
           const Divider(
