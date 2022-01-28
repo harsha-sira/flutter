@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wordle_inspired_app/pages/help_page.dart';
 import 'package:wordle_inspired_app/pages/home_page.dart';
+import 'package:wordle_inspired_app/pages/settings_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blueGrey,
       ),
       // home: const HomeScreen(),
-      home: const Help(),
+      // home: const Help(),
+      home: SettingsPage(),
     );
   }
 }
