@@ -1,5 +1,8 @@
+// import 'package:custom_switch/custom_switch.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wordle_inspired_app/components/app_bar_custom_icon.dart';
+import 'package:wordle_inspired_app/components/row_with_toggle_button.dart';
 import 'package:wordle_inspired_app/constants.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -34,6 +37,14 @@ class _SettingsPageState extends State<SettingsPage> {
             },
           ),
         ],
+      ),
+      body: Container(
+        color: kBackgroundColor,
+        child: Column(
+          children: [
+            RowWithToogleButton(),
+          ],
+        ),
       ),
     );
   }
