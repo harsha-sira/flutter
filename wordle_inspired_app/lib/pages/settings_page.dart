@@ -42,7 +42,33 @@ class _SettingsPageState extends State<SettingsPage> {
         color: kBackgroundColor,
         child: Column(
           children: [
-            RowWithToogleButton(),
+            RowWithToogleButton(
+              mainText: "Show Word Meaning",
+              subText: "Show meaning of the word, once you resolve it",
+              function: (value) {
+                print("Clicked");
+              },
+            ),
+            RowWithToogleButton(
+              mainText: "Show Word History",
+              subText: "Show previously resolved words and there meaning",
+              function: (value) {
+                print("Clicked");
+              },
+            ),
+            RowWithToogleButton(
+              mainText: "Dark Theme",
+              function: (value) {
+                print("Clicked");
+              },
+            ),
+            RowWithToogleButton(
+              mainText: "Color Blind Mode",
+              subText: "High contrast Colors",
+              function: (value) {
+                print("Clicked");
+              },
+            ),
           ],
         ),
       ),

@@ -2,9 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class RowWithToogleButton extends StatelessWidget {
-  const RowWithToogleButton({
-    Key? key,
-  }) : super(key: key);
+  const RowWithToogleButton(
+      {Key? key, required this.mainText, required this.function, this.subText})
+      : super(key: key);
+
+  final String mainText;
+  final String? subText;
+  final Function function;
 
   @override
   Widget build(BuildContext context) {
@@ -19,28 +23,30 @@ class RowWithToogleButton extends StatelessWidget {
       ),
       padding: const EdgeInsets.symmetric(
         horizontal: 12,
-        vertical: 8,
+        vertical: 16,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
+            children: [
               Text(
-                "Dark Theme",
-                style: TextStyle(
+                mainText,
+                style: const TextStyle(
                   // fontWeight: FontWeight.bold,
-                  fontSize: 24,
+                  fontSize: 20,
                 ),
               ),
-              Text(
-                "sub text",
-                style: TextStyle(
-                    // fontWeight: FontWeight.bold,
-                    fontSize: 12,
-                    color: Colors.grey),
-              ),
+              if (subText != null) ...[
+                Text(
+                  subText ?? "",
+                  style: const TextStyle(
+                      // fontWeight: FontWeight.bold,
+                      fontSize: 12,
+                      color: Colors.grey),
+                ),
+              ]
             ],
           ),
           const Spacer(),
@@ -48,9 +54,7 @@ class RowWithToogleButton extends StatelessWidget {
             scale: 0.7,
             child: CupertinoSwitch(
               value: false,
-              onChanged: (value) {
-                print(value);
-              },
+              onChanged: function(false),
               activeColor: Colors.green,
               trackColor: Colors.grey,
             ),
