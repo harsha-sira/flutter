@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wordle_inspired_app/components/app_bar_custom_icon.dart';
+import 'package:wordle_inspired_app/components/row_with_links.dart';
 import 'package:wordle_inspired_app/components/row_with_toggle_button.dart';
 import 'package:wordle_inspired_app/constants.dart';
 
@@ -65,6 +66,12 @@ class _SettingsPageState extends State<SettingsPage> {
             RowWithToogleButton(
               mainText: "Color Blind Mode",
               subText: "High contrast Colors",
+              function: (value) {
+                print("Clicked");
+              },
+            ),
+            RowWithLinks(
+              mainText: "Feedback",
               function: (value) {
                 print("Clicked");
               },
