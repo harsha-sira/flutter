@@ -1,14 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class RowWithLinks extends StatelessWidget {
-  const RowWithLinks(
-      {Key? key, required this.mainText, required this.function, this.subText})
-      : super(key: key);
+  RowWithLinks({
+    Key? key,
+    required this.mainText,
+  }) : super(key: key);
 
   final String mainText;
-  final String? subText;
-  final Function function;
 
   @override
   Widget build(BuildContext context) {
@@ -38,15 +37,6 @@ class RowWithLinks extends StatelessWidget {
                   fontSize: 20,
                 ),
               ),
-              if (subText != null) ...[
-                Text(
-                  subText ?? "",
-                  style: const TextStyle(
-                      // fontWeight: FontWeight.bold,
-                      fontSize: 12,
-                      color: Colors.grey),
-                ),
-              ]
             ],
           ),
           const Spacer(),
@@ -59,9 +49,7 @@ class RowWithLinks extends StatelessWidget {
                 decoration: TextDecoration.underline,
               ),
             ),
-            onTap: () {
-              print("tap");
-            },
+            onTap: () => _launchURL(emailLaunchUri.toString()),
           ),
           const Text(
             " | ",
@@ -79,12 +67,19 @@ class RowWithLinks extends StatelessWidget {
                 decoration: TextDecoration.underline,
               ),
             ),
-            onTap: () {
-              print("tap");
-            },
+            onTap: () => _launchURL("https://twitter.com/"),
           ),
         ],
       ),
     );
+  }
+
+  final Uri emailLaunchUri = Uri(
+    scheme: 'mailto',
+    path: 'harsha@example.com',
+  );
+
+  void _launchURL(String _url) async {
+    if (!await launch(_url)) throw 'Could not launch $_url';
   }
 }
